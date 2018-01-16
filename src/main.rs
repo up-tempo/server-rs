@@ -39,6 +39,7 @@ impl QueryService for QueryServicer {
     fn query_artists(&self, ctx: RpcContext, req: Query, sink: UnarySink<ArtistList>) {
         let artists = {
             let msg = req.get_query();
+            let id = req.get_id();
             let mut artists = Vec::new();
 
             let mut sap = ArtistInfo::new();
